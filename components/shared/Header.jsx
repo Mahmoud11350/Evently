@@ -2,7 +2,7 @@ import logoImg from "@/public/assets/images/logo.svg";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton, UserProfile } from "@clerk/nextjs";
 import NavItems from "./NavItems";
 import MobileNav from "./MobileNav";
 const Header = () => {
@@ -24,6 +24,7 @@ const Header = () => {
         {/* logged In Mobile Nav  */}
         <div className="md:hidden flex items-center justify-between gap-5">
           <UserButton />
+
           <div className="">
             <SignedIn>
               <MobileNav />

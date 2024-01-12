@@ -1,6 +1,7 @@
 import { Webhook } from "svix";
 import { headers } from "next/headers";
-import { WebhookEvent } from "@clerk/nextjs/server";
+import { NextResponse } from "next/server";
+import { clerkClient } from "@clerk/nextjs";
 import {
   createUser,
   deleteUser,
@@ -55,7 +56,6 @@ export async function POST(req) {
 
   // Get the ID and type
   const { id } = evt.data;
-  console.log(evt);
   const eventType = evt.type;
   if (eventType === "user.created") {
     const { id, email_addresses, image_url, first_name, last_name, username } =
