@@ -19,11 +19,11 @@ export const updateUser = async (id, user) => {
     if (!oldUser) {
       throw new Error("can't find needed user to update");
     }
-    const updatedUser = await User.findOneAndUpdate({ clerkId }, user, {
+    const updatedUser = await User.findOneAndUpdate({ clerkId: id }, user, {
       new: true,
       runValidators: true,
     });
-    return JSON.parse(JSON.stringify(updateUser));
+    return JSON.parse(JSON.stringify(updatedUser));
   } catch (error) {
     handleError(error);
   }
@@ -35,7 +35,7 @@ export const deleteUser = async (clerkId) => {
     if (!user) {
       throw new Error("can't find needed user to delete");
     }
-    const deletedUser = await User.findOneAndDelete(clerkId);
+    const deletedUser = await User.findOneAndDelete({ clerkId });
     return JSON.parse(Json.stringify(deletedUser));
   } catch (error) {
     handleError(error);
